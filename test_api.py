@@ -1,5 +1,7 @@
 import requests
-import json
+
+# 你的公网基础地址
+BASE_URL = "https://aml-memory-api-whktvwewcc.cn-hangzhou.fcapp.run"
 
 # 你设置的保护密码
 headers = {
@@ -18,7 +20,8 @@ add_data = {
 }
 
 print("--- 测试写入 (Add) ---")
-res_add = requests.post("http://127.0.0.1:8080/add", headers=headers, json=add_data)
+# ⚠️ 注意这里：加了 /add
+res_add = requests.post(f"{BASE_URL}/add", headers=headers, json=add_data)
 print(f"状态码: {res_add.status_code}")
 print(f"返回结果: {res_add.text}\n")
 
@@ -31,6 +34,7 @@ search_data = {
 }
 
 print("--- 测试检索 (Search) ---")
-res_search = requests.post("http://127.0.0.1:8080/search", headers=headers, json=search_data)
+# ⚠️ 注意这里：加了 /search
+res_search = requests.post(f"{BASE_URL}/search", headers=headers, json=search_data)
 print(f"状态码: {res_search.status_code}")
 print(f"返回结果: {res_search.text}\n")
